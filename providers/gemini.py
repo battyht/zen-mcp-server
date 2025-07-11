@@ -19,43 +19,6 @@ class GeminiModelProvider(ModelProvider):
 
     # Model configurations using ModelCapabilities objects
     SUPPORTED_MODELS = {
-        "gemini-2.0-flash": ModelCapabilities(
-            provider=ProviderType.GOOGLE,
-            model_name="gemini-2.0-flash",
-            friendly_name="Gemini (Flash 2.0)",
-            context_window=1_048_576,  # 1M tokens
-            max_output_tokens=65_536,
-            supports_extended_thinking=True,  # Experimental thinking mode
-            supports_system_prompts=True,
-            supports_streaming=True,
-            supports_function_calling=True,
-            supports_json_mode=True,
-            supports_images=True,  # Vision capability
-            max_image_size_mb=20.0,  # Conservative 20MB limit for reliability
-            supports_temperature=True,
-            temperature_constraint=create_temperature_constraint("range"),
-            max_thinking_tokens=24576,  # Same as 2.5 flash for consistency
-            description="Gemini 2.0 Flash (1M context) - Latest fast model with experimental thinking, supports audio/video input",
-            aliases=["flash-2.0", "flash2"],
-        ),
-        "gemini-2.0-flash-lite": ModelCapabilities(
-            provider=ProviderType.GOOGLE,
-            model_name="gemini-2.0-flash-lite",
-            friendly_name="Gemin (Flash Lite 2.0)",
-            context_window=1_048_576,  # 1M tokens
-            max_output_tokens=65_536,
-            supports_extended_thinking=False,  # Not supported per user request
-            supports_system_prompts=True,
-            supports_streaming=True,
-            supports_function_calling=True,
-            supports_json_mode=True,
-            supports_images=False,  # Does not support images
-            max_image_size_mb=0.0,  # No image support
-            supports_temperature=True,
-            temperature_constraint=create_temperature_constraint("range"),
-            description="Gemini 2.0 Flash Lite (1M context) - Lightweight fast model, text-only",
-            aliases=["flashlite", "flash-lite"],
-        ),
         "gemini-2.5-flash": ModelCapabilities(
             provider=ProviderType.GOOGLE,
             model_name="gemini-2.5-flash",
@@ -108,8 +71,6 @@ class GeminiModelProvider(ModelProvider):
 
     # Model-specific thinking token limits
     MAX_THINKING_TOKENS = {
-        "gemini-2.0-flash": 24576,  # Same as 2.5 flash for consistency
-        "gemini-2.0-flash-lite": 0,  # No thinking support
         "gemini-2.5-flash": 24576,  # Flash 2.5 thinking budget limit
         "gemini-2.5-pro": 32768,  # Pro 2.5 thinking budget limit
     }
