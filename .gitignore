@@ -182,5 +182,6 @@ CLAUDE.local.md
 .zen_venv/
 .docker_cleaned
 logs/
+zenlog/
 *.backup
 /.desktop_configured

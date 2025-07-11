@@ -15,8 +15,8 @@ class LogUtils:
     """Centralized logging utilities for simulator tests."""
 
     # Log file paths
-    MAIN_LOG_FILE = "logs/mcp_server.log"
-    ACTIVITY_LOG_FILE = "logs/mcp_activity.log"
+    MAIN_LOG_FILE = "zenlog/mcp_server.log"
+    ACTIVITY_LOG_FILE = "zenlog/mcp_activity.log"
 
     @classmethod
     def get_server_logs_since(cls, since_time: Optional[str] = None) -> str:

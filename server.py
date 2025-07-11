@@ -115,7 +115,7 @@ stderr_handler.setFormatter(LocalTimeFormatter(log_format))
 root_logger.addHandler(stderr_handler)
 
 # Note: MCP stdio_server interferes with stderr during tool execution
-# All logs are properly written to logs/mcp_server.log for monitoring
+# All logs are properly written to zenlog/mcp_server.log for monitoring
 
 # Set root logger level
 root_logger.setLevel(getattr(logging, log_level, logging.INFO))
@@ -123,8 +123,8 @@ root_logger.setLevel(getattr(logging, log_level, logging.INFO))
 # Add rotating file handler for local log monitoring
 
 try:
-    # Create logs directory in project root
-    log_dir = Path(__file__).parent / "logs"
+    # Create zenlog directory in project root for clearer log management
+    log_dir = Path(__file__).parent / "zenlog"
     log_dir.mkdir(exist_ok=True)
 
     # Main server log with size-based rotation (20MB max per file)

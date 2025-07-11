@@ -29,7 +29,7 @@ class LogsValidationTest(BaseSimulatorTest):
             import os
 
             logs = ""
-            log_files = ["logs/mcp_server.log", "logs/mcp_activity.log"]
+            log_files = ["zenlog/mcp_server.log", "zenlog/mcp_activity.log"]
 
             for log_file in log_files:
                 if os.path.exists(log_file):

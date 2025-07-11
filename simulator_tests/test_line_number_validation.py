@@ -147,7 +147,7 @@ def validate_data(data):
 
             # Get logs from server
             try:
-                log_file_path = "logs/mcp_server.log"
+                log_file_path = "zenlog/mcp_server.log"
                 with open(log_file_path) as f:
                     lines = f.readlines()
                     logs = "".join(lines[-500:])

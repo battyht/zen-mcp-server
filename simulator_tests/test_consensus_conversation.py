@@ -30,7 +30,7 @@ class TestConsensusConversation(ConversationBaseTest):
     def get_server_logs(self):
         """Get server logs from local log file"""
         try:
-            log_file_path = "logs/mcp_server.log"
+            log_file_path = "zenlog/mcp_server.log"
             with open(log_file_path) as f:
                 lines = f.readlines()
                 # Return last 100 lines

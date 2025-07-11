@@ -314,7 +314,7 @@ if __name__ == "__main__":
         """Check server logs for any error messages that might explain failures"""
         try:
             # Get recent logs from the log file
-            log_file_path = "logs/mcp_server.log"
+            log_file_path = "zenlog/mcp_server.log"
             with open(log_file_path) as f:
                 lines = f.readlines()
                 recent_logs = lines[-50:]  # Last 50 lines
