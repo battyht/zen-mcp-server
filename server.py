@@ -123,16 +123,17 @@ root_logger.setLevel(getattr(logging, log_level, logging.INFO))
 # Add rotating file handler for local log monitoring
 
 try:
-    # Create zenlog directory in project root for clearer log management
-    log_dir = Path(__file__).parent / "zenlog"
-    log_dir.mkdir(exist_ok=True)
+    # Use fixed log directory for better log management
+    # This ensures logs are always in a predictable location regardless of uvx cache
+    log_dir = Path("/Users/taohu/Projects/zen-mcp-server/log")
+    log_dir.mkdir(parents=True, exist_ok=True)
 
     # Main server log with size-based rotation (20MB max per file)
     # This ensures logs don't grow indefinitely and are properly managed
     file_handler = RotatingFileHandler(
         log_dir / "mcp_server.log",
         maxBytes=20 * 1024 * 1024,  # 20MB max file size
-        backupCount=5,  # Keep 10 rotated files (100MB total)
+        backupCount=5,  # Keep 5 rotated files (100MB total)
         encoding="utf-8",
     )
     file_handler.setLevel(getattr(logging, log_level, logging.INFO))
@@ -143,8 +144,8 @@ try:
     mcp_logger = logging.getLogger("mcp_activity")
     mcp_file_handler = RotatingFileHandler(
         log_dir / "mcp_activity.log",
-        maxBytes=10 * 1024 * 1024,  # 20MB max file size
-        backupCount=2,  # Keep 5 rotated files (20MB total)
+        maxBytes=10 * 1024 * 1024,  # 10MB max file size
+        backupCount=2,  # Keep 2 rotated files (20MB total)
         encoding="utf-8",
     )
     mcp_file_handler.setLevel(logging.INFO)

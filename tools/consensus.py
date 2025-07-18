@@ -539,10 +539,13 @@ of the evidence, even when it strongly points in one direction.""",
             # Prepare the prompt with any relevant files
             prompt = self.initial_prompt
             if request.relevant_files:
+                # Get model_context from stored arguments
+                model_context = self._current_arguments.get("_model_context")
                 file_content, _ = self._prepare_file_content_for_prompt(
                     request.relevant_files,
                     request.continuation_id,
                     "Context files",
+                    model_context=model_context,
                 )
                 if file_content:
                     prompt = f"{prompt}\n\n=== CONTEXT FILES ===\n{file_content}\n=== END CONTEXT ==="
